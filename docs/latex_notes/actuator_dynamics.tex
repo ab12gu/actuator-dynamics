@@ -1,0 +1,96 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{pdfpages}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{cleveref}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{TITLE}
+
+\author{\IEEEauthorblockN{Abhay Gupta}
+\IEEEauthorblockA{\textit{Department of Mechanical Engineering} \\
+\textit{University of Washington}\\
+Seattle, WA \\}
+}
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\section{Introduction and Overview}
+    \input{sections/introduction}
+
+\section{Simulation Model}
+    \input{sections/models}
+
+\section{Algorithm Implementation and Development}
+
+\section{Computational Results}
+
+\section{Summary and Conclusions}
+
+\section{Appendix A: Matlab Functions}
+
+There were a few standard MATLAB functions used for implementation of the algorithm. These functions are explained below. 
+
+\section{Appendix B: Matlab Code}
+
+\section{Appendix C: Quick Latex Functions}
+
+\begin{equation}
+    A = \alpha I =
+    \begin{bmatrix}
+        \alpha & 0 \\
+        0 & \alpha
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    ||x_{k+1} - Ax_k||
+\end{equation}
+
+\begin{equation}
+    \mathbf{X'}=\left[ \begin{array}{cccc}
+    {| } & {| } & { } & {|} \\ 
+    {\mathbf{x}_{2}} & {\mathbf{x}_{3}} & {\cdots} & {\mathbf{x}_{m}} \\
+    {| } & {| } & { } & {|} \\ 
+    \end{array}\right]
+\end{equation}
+
+\begin{equation}
+    \mathrm{A}=\mathrm{X}^{\prime} \mathrm{X}^{\dagger}
+\end{equation}
+
+\noindent
+where $\dagger$ is the Moore-Penrose pseudo-inverse. This solution minimizes the error:
+
+\begin{equation}
+    \left\|\mathbf{X}^{\prime}-\mathbf{A X}\right\|_{F}
+\end{equation}
+
+\noindent
+where $||\cdot||_F$ is the Frobenius norm, given by
+
+\begin{equation}
+    \|\mathbf{X}\|_{F}=\sqrt{\sum_{j=1}^{n} \sum_{k=1}^{m} X_{j k}^{2}}
+\end{equation}
+
+\begin{figure}[ht!]
+% \centerline{\includegraphics[width=1\columnwidth]{sing_val.png}}
+\caption{The singular value spectrum of the original video. }
+\label{sing_val}
+\end{figure}
+
+
+
+\end{document}
