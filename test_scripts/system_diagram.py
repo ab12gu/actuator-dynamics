@@ -1,7 +1,7 @@
 # filename: system_dyanmics.py
 #
 # by: Abhay Gupta & Karthik Subramanya Karvaje
-# date: 07/10/19
+# date: 07/12/19
 #
 # description: form plots of system dynamics
 
@@ -11,6 +11,7 @@ import hebi
 import numpy as np
 import math as m
 import csv
+import random
 
 def main():
     '''
@@ -33,13 +34,13 @@ def main():
 
     ## Open-loop controller ----------------------------------------------------------------------
 
-    w = -1.0*m.pi*4.0 # frequency
+    w = -1*m.pi*5.0 # frequency (to control the velocity)
 
     #setting initial positipon to 0
     group_command.position = 0
     time.sleep(2)
     #t0, dt, tf = 0.0, 0.1, 2.0 # initial time & step size
-    t0, dt, tf = 0.0, 0.04, 15.0 # initial time & step size
+    t0, dt, tf = 0.0, 0.03, 15.0 # initial time & step size
     time_range = np.arange(t0,tf,dt)
     group.command_lifetime = dt # set length of time of command (ms)
 
@@ -68,7 +69,11 @@ def main():
         
         group_feedback = group.get_next_feedback(reuse_fbk=group_feedback)
         w_t = np.multiply(w,t)
-        group_command.velocity = 0.5*np.cos(w_t)
+        #group_command.velocity = 2*np.sin(w_t)
+        #I am generating a random input signal (random gaussian input)
+        #group_command.velocity =  random.gauss(0,0.6)
+        #group_command.velocity =  random.gammavariate(0.2, 1.8)
+        group_command.velocity =  random.uniform(-3,3)
         group.send_command(group_command)
 
         print('input effort:', group_command.effort)
